@@ -3,7 +3,6 @@
 
 	if ('POST' === $_SERVER['REQUEST_METHOD']) {
 		$json = file_get_contents('php://input');
-		// echo $json;
 		$person = (array) json_decode($json);
 
 		$sql = "insert into parameter values(NULL, '" 

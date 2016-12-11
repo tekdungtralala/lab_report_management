@@ -26,6 +26,13 @@
 					controllerAs: 'vm',
 					isSecure: true
 				})
+				.state('admin.pps', {
+					url: '/pps',
+					templateUrl: 'angular-app/pages/admin/pps/pps.html',
+					controller: 'PPSCtrl',
+					controllerAs: 'vm',
+					isSecure: true
+				})
 			.state('login', {
 				url: '/',
 				templateUrl: 'angular-app/pages/login/login.html',
