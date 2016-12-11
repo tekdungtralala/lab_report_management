@@ -19,6 +19,13 @@
 					controllerAs: 'vm',
 					isSecure: true
 				})
+				.state('admin.parameter', {
+					url: '/parameter',
+					templateUrl: 'angular-app/pages/admin/parameter/parameter.html',
+					controller: 'ParamterCtrl',
+					controllerAs: 'vm',
+					isSecure: true
+				})
 			.state('login', {
 				url: '/',
 				templateUrl: 'angular-app/pages/login/login.html',

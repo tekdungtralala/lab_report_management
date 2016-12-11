@@ -1,7 +1,7 @@
 <?php
 include '../connect.php';
 
-$sql = "select * from pelanggan";
+$sql = "select * from parameter";
 $result = $conn->query($sql);
 $rows = array();
 if ($result->num_rows > 0) {

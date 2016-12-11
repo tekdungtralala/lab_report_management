@@ -6,13 +6,10 @@
 		// echo $json;
 		$person = (array) json_decode($json);
 
-		$sql = "insert into pelanggan values(NULL, '" 
-			. $person['kp'] . "', '" 
+		$sql = "insert into parameter values(NULL, '" 
 			. $person['name'] . "', '" 
-			. $person['address'] . "', '" 
-			. $person['hp'] . "', '" 
-			. $person['email'] . "', '" 
-			. $person['desc'] . "')";
+			. $person['unit'] . "', '" 
+			. $person['price'] . "')";
 
 		$conn->query($sql);
 	}
