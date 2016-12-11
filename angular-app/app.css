@@ -1,0 +1,6 @@
+.persons .dataTables_length {
+	float: left;
+}
+.persons .dataTables_filter {
+	float: right;
+}
