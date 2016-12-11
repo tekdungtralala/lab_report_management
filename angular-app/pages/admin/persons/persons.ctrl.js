@@ -34,7 +34,8 @@
 			}
 		}
 
-		function showPersonForm(person) {
+		function showPersonForm(person, isView) {
+			vm.formValue = {};
 			if (person) {
 				vm.formValue.id = person.id;
 				vm.formValue.name = person.nama;
@@ -43,8 +44,8 @@
 				vm.formValue.email = person.email;
 				vm.formValue.address = person.alamat;
 				vm.formValue.desc = person.ket;
-			} else {
-				vm.formValue = {};
+				if (isView)
+					vm.formValue.isView = true;
 			}
 
 			modalinstance = $uibModal.open({
