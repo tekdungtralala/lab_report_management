@@ -3,7 +3,7 @@
 
 	if ('POST' === $_SERVER['REQUEST_METHOD']) {
 		$json = file_get_contents('php://input');
-		$sql = "insert into reports_test_results values(NULL"
+		$sql = "insert into pps values(NULL"
 			. ", '" . $_GET['id_person'] . "'"
 			. ", '" . $_GET['received_dt'] . "'"
 			. ", '" . $_GET['analisis_dt'] . "'"

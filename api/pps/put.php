@@ -3,7 +3,7 @@
 
 	if ('PUT' === $_SERVER['REQUEST_METHOD']) {
 		$json = file_get_contents('php://input');
-		$sql = "update reports_test_results SET "
+		$sql = "update pps SET "
 			. "  received_dt = '" . $_GET['received_dt'] . "'"
 			. ", analisis_dt = '" . $_GET['analisis_dt'] . "'"
 			. ", sample_condition = '" . $_GET['sample_condition'] . "'"
