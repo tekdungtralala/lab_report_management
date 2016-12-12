@@ -19,6 +19,9 @@
 			editPPS: editPPS,
 			getPPSs: getPPSs,
 			deletePPS: deletePPS,
+			submitToDispotition: submitToDispotition,
+			getPPSDispotition: getPPSDispotition,
+			submitToTestResult: submitToTestResult,
 
 			getParameters: getParameters,
 			deleteParameter: deleteParameter,
@@ -88,11 +91,23 @@
 		}
 
 		function getPPSs() {
-			return $http.get('api/pps/get.php').then(getData);
+			return $http.get('api/pps/get_new_reports.php').then(getData);
 		}
 
 		function deletePPS(id) {
 			return $http.delete('api/pps/delete.php?id=' + id);
+		}
+
+		function submitToDispotition(id) {
+			return $http.put('api/pps/submit_to_disposition.php?id=' + id);
+		}
+
+		function getPPSDispotition() {
+			return $http.get('api/pps/get_disposition_reports.php').then(getData);
+		}
+
+		function submitToTestResult(id, data) {
+			return $http.put('api/pps/submit_to_test_result.php?id=' + id, data);
 		}
 
 		function getParameters(data) {

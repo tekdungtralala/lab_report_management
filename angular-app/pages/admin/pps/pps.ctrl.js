@@ -231,6 +231,9 @@
 			var dateFormat = 'YYYY-MM-D';
 			vm.formValue.received_dt = moment(data.received_dt, dateFormat).toDate();
 			vm.formValue.analisis_dt = moment(data.analisis_dt, dateFormat).toDate();
+			var formatDate = 'DD-MM-YYYY';
+			vm.formValue.received_dtStr = moment(vm.formValue.received_dt).format(formatDate);
+			vm.formValue.analisis_dtStr = moment(vm.formValue.analisis_dt).format(formatDate);
 			vm.formValue.sample_condition = data.sample_condition;
 			vm.formValue.sample_type = data.sample_type;
 			vm.formValue.total = parseInt(data.total_price);
@@ -250,7 +253,7 @@
 		function preDisposition(data) {
 			var r = confirm('Are you sure want to submit this sample ?');
 			if (r == true) {
-
+				dataservice.submitToDispotition(data.id).then(activate);
 			}
 		}
 

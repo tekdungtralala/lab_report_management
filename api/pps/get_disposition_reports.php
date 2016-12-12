@@ -1,7 +1,7 @@
 <?php
 include '../connect.php';
 
-$sql = "select p.* from pelanggan p where p.id not in (select r.id_person from reports_test_results r where r.state = 4)";
+$sql = "SELECT r.*, p.nama as person_name, p.alamat as person_address, p.id as person_id FROM pps r, pelanggan p where p.id = r.id_person and r.state = 2";
 $result = $conn->query($sql);
 $rows = array();
 if ($result->num_rows > 0) {

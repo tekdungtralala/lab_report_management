@@ -30,11 +30,6 @@
 					<td>{{l.total_sample}}</td>
 					<td>{{l.total_priceRp}}</td>
 					<td class="col-md-3">
-						<button ng-click="vm.editData(l, true)" 
-							uib-popover="Lihat Detail" popover-trigger="'mouseenter'"
-							type="button" class="btn btn-default btn-sm" aria-label="Left Align">
-							<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-						</button>
 						<button ng-click="vm.editData(l)" 
 							uib-popover="Edit Data" popover-trigger="'mouseenter'"
 							type="button" class="btn btn-default btn-sm" aria-label="Left Align">
@@ -67,8 +62,13 @@
 				<label class="col-sm-2 control-label">Nama Pelanggan</label>
 				<div class="col-sm-9">
 					<input ng-model="vm.formValue.person.nama" 
+						ng-show="!vm.formValue.isView"
 						id="person"
 						type="text" class="form-control" placeholder="Nama Pelanggan" disabled>
+					<p ng-show="vm.formValue.isView"
+						class="form-control-static">
+						{{vm.formValue.person.nama}}
+					</p>
 				</div>
 				<div class="col-sm-1">
 					<button ng-hide="vm.formValue.id"
@@ -80,17 +80,22 @@
 
 			<div ng-class="{'has-error': vm.hasError['person']}" class="form-group">
 				<label class="col-sm-2 control-label">Alamat</label>
-				<div class="col-sm-10">
+				<div class="col-sm-9">
 					<textarea ng-model="vm.formValue.person.alamat" 
+						ng-show="!vm.formValue.isView"
 						id="info"
 						class="form-control" disabled></textarea>
+					<p ng-show="vm.formValue.isView"
+						class="form-control-static">
+						{{vm.formValue.person.alamat}}
+					</p>
 				</div>
 			</div>
 
 			<div ng-class="{'has-error': vm.hasError['received_dt']}" class="form-group">
 				<label class="col-sm-2 control-label">Tanggal Terima</label>
 				<div class="col-sm-4">
-					<p class="input-group">
+					<p ng-show="!vm.formValue.isView" class="input-group">
 						<input type="text" class="form-control" 
 							id="received_dt"
 							uib-datepicker-popup="dd-MM-yyyy" 
@@ -108,13 +113,16 @@
 							</button>
 						</span>
 					</p>
+					<p ng-show="vm.formValue.isView" class="form-control-static">
+						{{vm.formValue.received_dtStr}}
+					</p>
 				</div>
 			</div>
 
 			<div ng-class="{'has-error': vm.hasError['analisis_dt']}" class="form-group">
 				<label class="col-sm-2 control-label">Tanggal Analisis</label>
 				<div class="col-sm-4">
-					<p class="input-group">
+					<p ng-show="!vm.formValue.isView" class="input-group">
 						<input type="text" class="form-control" 
 							id="analisis_dt"
 							uib-datepicker-popup="dd-MM-yyyy" 
@@ -132,17 +140,23 @@
 							</button>
 						</span>
 					</p>
+					<p ng-show="vm.formValue.isView" class="form-control-static">
+						{{vm.formValue.analisis_dtStr}}
+					</p>
 				</div>
 			</div>
 
 			<div ng-class="{'has-error': vm.hasError['sample_condition']}" class="form-group">
 				<label class="col-sm-2 control-label">Kondisi Sampel</label>
 				<div class="col-sm-4">
-					<select class="form-control" ng-model="vm.formValue.sample_condition"
+					<select ng-show="!vm.formValue.isView" class="form-control" ng-model="vm.formValue.sample_condition"
 						ng-disabled="vm.formValue.isView"
 						id="sample_condition">
 						<option ng-repeat="opt in vm.sampleConditions" value="{{opt}}">{{opt}}</option>
 					</select>
+					<p ng-show="vm.formValue.isView" class="form-control-static">
+						{{vm.formValue.sample_condition}}
+					</p>
 				</div>
 			</div>
 
@@ -151,9 +165,13 @@
 				<div class="col-sm-4">
 					<select class="form-control" ng-model="vm.formValue.sample_type"
 						ng-disabled="vm.formValue.isView"
+						ng-show="!vm.formValue.isView"
 						id="sample_type">
 						<option ng-repeat="opt in vm.sampleTypes" value="{{opt}}">{{opt}}</option>
 					</select>
+					<p ng-show="vm.formValue.isView" class="form-control-static">
+						{{vm.formValue.sample_condition}}
+					</p>
 				</div>
 			</div>
 
@@ -183,9 +201,13 @@
 						<td class="col-sm-3">
 							<div ng-class="{'has-error': vm.hasError['sample' + s.number]}"class="input-group">
 								<input ng-model="s.sampleCode" 
+									ng-show="!vm.formValue.isView"
 									ng-disabled="vm.formValue.isView"
 									id="sample{{s.number}}"
 									type="text" class="form-control" placeholder="Kode Sample">
+								<p ng-show="vm.formValue.isView" class="form-control-static">
+									{{s.sampleCode}}
+								</p>
 								<div class="input-group-addon" ng-hide="vm.formValue.isView">
 									<button ng-click="vm.removeSample(s)" type="submit" class="btn btn-danger btn-xs">
 										<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
@@ -216,10 +238,14 @@
 								<li class="list-group-item param-item"
 									ng-repeat="p in s.parameters">
 										<input ng-model="p.quantity" 
+											ng-show="!vm.formValue.isView"
 											ng-disabled="vm.formValue.isView"
 											ng-change="vm.updatePrice()"
 											min="1" 
 											type="number" class="form-control" placeholder="Jumlah"/>
+										<span ng-show="vm.formValue.isView">
+											{{p.quantity}}
+										</span>
 									</li>
 							</ul>
 						</td>
@@ -252,7 +278,7 @@
 			</div>
 
 			<div class="form-group" ng-hide="vm.formValue.isView">
-				<div class="col-sm-offset-2 col-sm-10">
+				<div class="col-sm-12">
 					<button ng-click="vm.saveForm()" type="submit" class="btn btn-primary">Save</button>
 					&nbsp;&nbsp;
 					<button ng-click="vm.toggleForm()" type="submit" class="btn btn-default">Cancel</button>

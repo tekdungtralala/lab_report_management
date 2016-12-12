@@ -40,6 +40,13 @@
 					controllerAs: 'vm',
 					isSecure: true
 				})
+				.state('admin.disposition', {
+					url: '/disposition',
+					templateUrl: 'angular-app/pages/admin/disposition/disposition.html',
+					controller: 'DispositionCtrl',
+					controllerAs: 'vm',
+					isSecure: true
+				})
 			.state('login', {
 				url: '/',
 				templateUrl: 'angular-app/pages/login/login.html',
