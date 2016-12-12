@@ -27,8 +27,7 @@
 				})
 				.catch(function() {
 					vm.errorMsg = true;
-				})
-			console.log(vm.auth)
+				});
 		}
 	}
 })();
