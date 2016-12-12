@@ -8,16 +8,12 @@
 				<form role="form">
 					<fieldset>
 						<div class="form-group">
-							<input class="form-control" placeholder="E-mail" name="email" type="email" autofocus="">
+							<input ng-model="vm.auth.username" class="form-control" placeholder="Username" type="text">
 						</div>
 						<div class="form-group">
-							<input class="form-control" placeholder="Password" name="password" type="password" value="">
+							<input ng-model="vm.auth.password" class="form-control" placeholder="Password" type="password" value="">
 						</div>
-						<div class="checkbox">
-							<label>
-								<input name="remember" type="checkbox" value="Remember Me">Remember Me
-							</label>
-						</div>
+						<div ng-show="vm.errorMsg" class="alert alert-danger" role="alert">Gagal Login</div>
 						<a ng-click="vm.login()" href="" class="btn btn-sm btn-success">Login</a>
 					</fieldset>
 				</form>

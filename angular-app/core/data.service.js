@@ -6,6 +6,10 @@
 
 	function DataService($http) {
 		var service = {
+			login: login,
+			logout: logout,
+			hasLoggedUser: hasLoggedUser,
+
 			getOfficers: getOfficers,
 			editOfficer: editOfficer,
 			createOfficer: createOfficer,
@@ -28,6 +32,18 @@
 			findAvailablePerson: findAvailablePerson
 		}
 		return service;
+
+		function login(data) {
+			return $http.post('api/login/login.php', data);
+		}
+
+		function logout() {
+			return $http.get('api/login/logout.php');	
+		}
+
+		function hasLoggedUser() {
+			return $http.get('api/login/check_user.php');	
+		}
 
 		function getOfficers() {
 			return $http.get('api/officer/get.php').then(getData);

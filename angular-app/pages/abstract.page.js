@@ -3,49 +3,54 @@
 	'use strict';
 
 	angular
-		.module( 'bursped-stock-ui' )
+		.module( 'app' )
 		.factory( 'abstractPage' , AbstractPage);
 
-	function AbstractPage($q, $state, $stateParams, appData) {
+	function AbstractPage($q, $state, $stateParams, appData, dataservice) {
 		var service = {
 			startCtrl: startCtrl,
-			goToState: goToState,
 			gotoDashboardPage: gotoDashboardPage,
 			gotoLoginPage: gotoLoginPage
 		};
 		return service;
 
 		function startCtrl() {
-			var hasLoggedUser = appData.getLoggedUser();
+			var hasLoggedUser = appData.hasLoggedUser();
+			var isSecurePage = $state.current.isSecure;
 
-			if ($state.current.isSecure && !hasLoggedUser) {
-				// redirect to login page
-				gotoLoginPage();
-				return $q.reject();
-			} else if (!$state.current.isSecure && hasLoggedUser) {
-				// redirect to index page
-				gotoDashboardPage();
-				return $q.reject();
+			if (!hasLoggedUser) {
+				var deferred = $q.defer();
+				dataservice
+					.hasLoggedUser()
+					.then(function() {
+						deferred.resolve(true);
+						if (!isSecurePage) gotoDashboardPage();
+					})
+					.catch(function() {
+						deferred.reject(false);
+						gotoLoginPage();
+					});
+
+				return deferred.promise;
 			} else {
-				// let access to page;
-				return $q.when();
+				if (isSecurePage && !hasLoggedUser) {
+					gotoLoginPage();
+					return $q.reject(false);
+				} else if (!isSecurePage && hasLoggedUser) {
+					gotoDashboardPage();
+					return $q.reject(false);
+				} else {
+					return $q.when();
+				}
 			}
 		}
 
-		function goToState(stateName) {
-			var queryParams = {
-				apimock: $stateParams.apimock, 
-				useMinify: $stateParams.useMinify
-			};
-			$state.go(stateName, queryParams);
-		}
-
 		function gotoDashboardPage() {
-			goToState('dashboard.stock');
+			$state.go('admin');
 		}
 
 		function gotoLoginPage() {
-			goToState('login');
+			$state.go('login');
 		}
 	}
 
