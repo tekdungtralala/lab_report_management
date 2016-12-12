@@ -5,7 +5,7 @@
 		.module('app')
 		.controller('AdminCtrl', AdminCtrl);
 
-	function AdminCtrl($state, abstractPage, dataservice) {
+	function AdminCtrl($state, abstractPage, dataservice, appData) {
 		var vm = this;
 		vm.stateActive = $state.current.name;
 		
@@ -17,8 +17,10 @@
 
 		function logout() {
 			dataservice.logout().then(function() {
+				appData.setLoggedUser(null);
 				$state.go('login');
 			});
+			
 		}
 
 		function gotoToState(targetState) {
