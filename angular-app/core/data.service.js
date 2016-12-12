@@ -6,6 +6,11 @@
 
 	function DataService($http) {
 		var service = {
+			getOfficers: getOfficers,
+			editOfficer: editOfficer,
+			createOfficer: createOfficer,
+			deleteOfficer: deleteOfficer,
+
 			createPPS: createPPS,
 			editPPS: editPPS,
 			getPPSs: getPPSs,
@@ -23,6 +28,22 @@
 			findAvailablePerson: findAvailablePerson
 		}
 		return service;
+
+		function getOfficers() {
+			return $http.get('api/officer/get.php').then(getData);
+		}
+
+		function editOfficer(data) {
+			return $http.put('api/officer/put.php', data);
+		}
+
+		function createOfficer(data) {
+			return $http.post('api/officer/post.php', data);
+		}
+
+		function deleteOfficer(id) {
+			return $http.delete('api/officer/delete.php?id=' + id);
+		}
 
 		function createPPS(data) {
 			var dateFormat = 'YYYY-MM-D';

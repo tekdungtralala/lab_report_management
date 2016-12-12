@@ -33,6 +33,13 @@
 					controllerAs: 'vm',
 					isSecure: true
 				})
+				.state('admin.officer', {
+					url: '/officer',
+					templateUrl: 'angular-app/pages/admin/officer/officer.html',
+					controller: 'OfficerCtrl',
+					controllerAs: 'vm',
+					isSecure: true
+				})
 			.state('login', {
 				url: '/',
 				templateUrl: 'angular-app/pages/login/login.html',
