@@ -32,6 +32,7 @@
 		vm.removeParameter = removeParameter;
 		vm.editData = editData;
 		vm.preDelete = preDelete;
+		vm.preDisposition = preDisposition;
 
 		activate();
 		function activate() {
@@ -243,6 +244,13 @@
 			var r = confirm('Are you sure want to remove this data ?');
 			if (r == true) {
 				dataservice.deletePPS(data.id).then(activate);
+			}
+		}
+
+		function preDisposition(data) {
+			var r = confirm('Are you sure want to submit this sample ?');
+			if (r == true) {
+
 			}
 		}
 
