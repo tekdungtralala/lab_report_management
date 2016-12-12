@@ -15,6 +15,11 @@
 			createOfficer: createOfficer,
 			deleteOfficer: deleteOfficer,
 
+			getTestMethods: getTestMethods,
+			editTestMethod: editTestMethod,
+			createTestMethod: createTestMethod,
+			deleteTestMethod: deleteTestMethod,
+
 			createPPS: createPPS,
 			editPPS: editPPS,
 			getPPSs: getPPSs,
@@ -48,6 +53,26 @@
 			return $http.get('api/login/check_user.php');	
 		}
 
+
+
+		function getTestMethods() {
+			return $http.get('api/testMethod/get.php').then(getData);
+		}
+
+		function editTestMethod(data) {
+			return $http.put('api/testMethod/put.php', data);
+		}
+
+		function createTestMethod(data) {
+			return $http.post('api/testMethod/post.php', data);
+		}
+
+		function deleteTestMethod(id) {
+			return $http.delete('api/testMethod/delete.php?id=' + id);
+		}
+
+
+
 		function getOfficers() {
 			return $http.get('api/officer/get.php').then(getData);
 		}
@@ -63,6 +88,8 @@
 		function deleteOfficer(id) {
 			return $http.delete('api/officer/delete.php?id=' + id);
 		}
+
+
 
 		function createPPS(data) {
 			var dateFormat = 'YYYY-MM-D';
@@ -110,6 +137,8 @@
 			return $http.put('api/pps/submit_to_test_result.php?id=' + id, data);
 		}
 
+
+
 		function getParameters(data) {
 			return $http.get('api/parameter/get.php').then(getData);
 		}
@@ -125,6 +154,7 @@
 		function editParameter(data) {
 			return $http.put('api/parameter/put.php', data);
 		}
+
 
 
 

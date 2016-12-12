@@ -47,6 +47,13 @@
 					controllerAs: 'vm',
 					isSecure: true
 				})
+				.state('admin.testMethod', {
+					url: '/testMethod',
+					templateUrl: 'angular-app/pages/admin/testMethod/testMethod.html',
+					controller: 'TestMethodCtrl',
+					controllerAs: 'vm',
+					isSecure: true
+				})
 			.state('login', {
 				url: '/',
 				templateUrl: 'angular-app/pages/login/login.html',
