@@ -54,6 +54,13 @@
 					controllerAs: 'vm',
 					isSecure: true
 				})
+				.state('admin.ppsInProgress', {
+					url: '/ppsInProgress',
+					templateUrl: 'angular-app/pages/admin/ppsInProgress/ppsInProgress.html',
+					controller: 'PPSInProgressCtrl',
+					controllerAs: 'vm',
+					isSecure: true
+				})
 			.state('login', {
 				url: '/',
 				templateUrl: 'angular-app/pages/login/login.html',

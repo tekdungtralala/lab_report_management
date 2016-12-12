@@ -7,6 +7,8 @@
 
 	function AdminCtrl($state, abstractPage, dataservice) {
 		var vm = this;
+		vm.stateActive = $state.current.name;
+		
 
 		vm.logout = logout;
 		vm.gotoToState = gotoToState;
@@ -20,6 +22,7 @@
 		}
 
 		function gotoToState(targetState) {
+			vm.stateActive = targetState;
 			$state.go(targetState)
 		}
 	}

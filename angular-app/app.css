@@ -22,3 +22,11 @@
 	margin-bottom: 10px;
 	padding: 10px;
 }
+
+.ppsInProgress .table-samples .param-item {
+	background: inherit;
+	border: none;
+	height: 35px;
+	padding: 0px;
+	margin: 0px;
+}

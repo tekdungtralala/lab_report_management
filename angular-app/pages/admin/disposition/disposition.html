@@ -1,5 +1,5 @@
 <div class="disposition">
-	<h3>Disposition PPS</h3>
+	<h3>Disposisi PPS</h3>
 
 	<div ng-show="!vm.showForm">
 		<table datatable="ng" class="table row-border hover">
@@ -148,14 +148,14 @@
 						<td class="col-sm-1">
 							{{$index + 1}}
 						</td>
-						<td class="col-sm-3">
-							<div ng-class="{'has-error': vm.hasError['sample' + s.number]}"class="input-group">
+						<td class="col-sm-2">
+							<div ng-class="{'has-error': vm.hasError['sample' + s.number]}" class="input-group">
 								<p class="form-control-static">
 									{{s.sampleCode}}
 								</p>
 							</div>
 						</td>
-						<td class="col-sm-2">
+						<td class="col-sm-3">
 							<ul class="list-group" ng-show="s.parameters.length > 0">
 								<li class="list-group-item param-item"
 									ng-repeat="p in s.parameters">{{p.name}}</li>

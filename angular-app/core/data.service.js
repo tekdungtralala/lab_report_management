@@ -27,6 +27,8 @@
 			submitToDispotition: submitToDispotition,
 			getPPSDispotition: getPPSDispotition,
 			submitToTestResult: submitToTestResult,
+			getPPSInProgress: getPPSInProgress,
+			submitToCompleteResult: submitToCompleteResult,
 
 			getParameters: getParameters,
 			deleteParameter: deleteParameter,
@@ -135,6 +137,14 @@
 
 		function submitToTestResult(id, data) {
 			return $http.put('api/pps/submit_to_test_result.php?id=' + id, data);
+		}
+
+		function getPPSInProgress() {
+			return $http.get('api/pps/get_in_progress_reports.php').then(getData);
+		}
+
+		function submitToCompleteResult(id, data) {
+			return $http.put('api/pps/submit_to_complete_result.php?id=' + id, data);
 		}
 
 

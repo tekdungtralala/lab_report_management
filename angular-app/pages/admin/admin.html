@@ -32,21 +32,29 @@
 
 <!-- Page Content -->
 <div style="margin-top: 65px">
-
-	<div class="col-md-2">
+	<div class="col-md-3">
 		<p class="lead">Shop Name</p>
 		<div class="list-group">
-			<a ng-click="vm.gotoToState('admin.persons')" href="" class="list-group-item">Data Pelanggan</a>
-			<a ng-click="vm.gotoToState('admin.parameter')" href="" class="list-group-item">Data Parameter</a>
-			<a ng-click="vm.gotoToState('admin.officer')" href="" class="list-group-item">Data Petugas</a>
-			<a ng-click="vm.gotoToState('admin.testMethod')" href="" class="list-group-item">Data Metode Uji</a>
-			<a ng-click="vm.gotoToState('admin.pps')" href="" class="list-group-item">Entry Form PPS</a>
-			<a ng-click="vm.gotoToState('admin.disposition')" href="" class="list-group-item">Disposisi PPS</a>
-			<a ng-click="vm.logout()" href="" class="list-group-item">Logout</a>
+			<a ng-class="{'active': vm.stateActive === 'admin.persons'}" 
+				ng-click="vm.gotoToState('admin.persons')" href="" class="list-group-item" >Data Pelanggan</a>
+			<a ng-class="{'active': vm.stateActive === 'admin.parameter'}"
+				ng-click="vm.gotoToState('admin.parameter')" href="" class="list-group-item">Data Parameter</a>
+			<a ng-class="{'active': vm.stateActive === 'admin.officer'}"
+				ng-click="vm.gotoToState('admin.officer')" href="" class="list-group-item">Data Petugas</a>
+			<a ng-class="{'active': vm.stateActive === 'admin.testMethod'}"
+				ng-click="vm.gotoToState('admin.testMethod')" href="" class="list-group-item">Data Metode Uji</a>
+			<a ng-class="{'active': vm.stateActive === 'admin.pps'}"
+				ng-click="vm.gotoToState('admin.pps')" href="" class="list-group-item">Entry Form PPS</a>
+			<a ng-class="{'active': vm.stateActive === 'admin.disposition'}"
+				ng-click="vm.gotoToState('admin.disposition')" href="" class="list-group-item">Disposisi PPS</a>
+			<a ng-class="{'active': vm.stateActive === 'admin.ppsInProgress'}"
+				ng-click="vm.gotoToState('admin.ppsInProgress')" href="" class="list-group-item">Uji PPS</a>
+			<a
+				ng-click="vm.logout()" href="" class="list-group-item">Logout</a>
 		</div>
 	</div>
 
-	<div class="col-md-10">
+	<div class="col-md-9">
 		<ui-view/>
 	</div>
 </div>
