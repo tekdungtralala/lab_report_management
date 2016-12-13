@@ -250,10 +250,14 @@
 			}
 		}
 
-		function preDisposition(data) {
+		function preDisposition(id) {
 			var r = confirm('Are you sure want to submit this sample ?');
 			if (r == true) {
-				dataservice.submitToDispotition(data.id).then(activate);
+				dataservice.submitToDispotition(id).then(afterSubmit);
+				function afterSubmit() {
+					vm.showForm = false;
+					activate();
+				}
 			}
 		}
 
