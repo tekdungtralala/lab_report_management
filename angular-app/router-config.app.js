@@ -61,6 +61,13 @@
 					controllerAs: 'vm',
 					isSecure: true
 				})
+				.state('admin.archive', {
+					url: '/archive',
+					templateUrl: 'angular-app/pages/admin/archive/archive.html',
+					controller: 'ArchiveCtrl',
+					controllerAs: 'vm',
+					isSecure: true
+				})
 			.state('login', {
 				url: '/',
 				templateUrl: 'angular-app/pages/login/login.html',

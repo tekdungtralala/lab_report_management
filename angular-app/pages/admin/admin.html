@@ -49,6 +49,8 @@
 				ng-click="vm.gotoToState('admin.disposition')" href="" class="list-group-item">Disposisi PPS</a>
 			<a ng-class="{'active': vm.stateActive === 'admin.ppsInProgress'}"
 				ng-click="vm.gotoToState('admin.ppsInProgress')" href="" class="list-group-item">Uji PPS</a>
+			<a ng-class="{'active': vm.stateActive === 'admin.archive'}"
+				ng-click="vm.gotoToState('admin.archive')" href="" class="list-group-item">Archive PPS</a>
 			<a ng-click="vm.logout()" href="" class="list-group-item">Logout</a>
 		</div>
 	</div>

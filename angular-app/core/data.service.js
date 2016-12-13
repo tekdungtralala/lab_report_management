@@ -29,6 +29,7 @@
 			submitToTestResult: submitToTestResult,
 			getPPSInProgress: getPPSInProgress,
 			submitToCompleteResult: submitToCompleteResult,
+			getArchivePPS: getArchivePPS,
 
 			getParameters: getParameters,
 			deleteParameter: deleteParameter,
@@ -145,6 +146,10 @@
 
 		function submitToCompleteResult(id, data) {
 			return $http.put('api/pps/submit_to_complete_result.php?id=' + id, data);
+		}
+
+		function getArchivePPS() {
+			return $http.get('api/pps/get_archive_reports.php').then(getData);
 		}
 
 
